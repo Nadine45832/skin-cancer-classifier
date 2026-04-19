@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DermaScan</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+<header>
+  <span class="logo">🔬</span>
+  <div>
+    <h1>DermaScan</h1>
+    <p class="subtitle">AI-powered skin lesion classification</p>
+  </div>
+</header>
+
+<main>
+  <!-- Drop zone -->
+  <div id="dropzone">
+    <input type="file" id="fileInput" accept="image/*" />
+    <div class="placeholder">
+      <span class="upload-icon">⬆</span>
+      <p class="upload-text">Drop an image here, or click to browse</p>
+    </div>
+  </div>
+
+  <button id="analyzeBtn">Analyse</button>
+  <p id="error"></p>
+
+  <!-- Result card -->
+  <div id="card">
+    <div>
+      <p class="section-label">Most likely diagnosis</p>
+      <h2 id="diagnosis"></h2>
+      <div class="prob-row">
+        <div class="bar-track"><div class="bar-fill" id="topBar"></div></div>
+        <span id="topPct"></span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="section-label">All classes</p>
+    <div id="classList"></div>
+
+    <p class="disclaimer">
+      ⚕ This tool is for research purposes only and does not constitute
+      medical advice. Always consult a qualified dermatologist.
+    </p>
+  </div>
+</main>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
