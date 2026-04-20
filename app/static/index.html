@@ -26,12 +26,23 @@
     </div>
   </div>
 
+  <div class="model-switch">
+    <label for="modelSelect">Choose model</label>
+    <select id="modelSelect">
+      <option value="tf">TensorFlow</option>
+      <option value="pytorch">PyTorch</option>
+    </select>
+  </div>
+
   <button id="analyzeBtn">Analyse</button>
+  <p id="selectedModel">Selected model: <strong>TensorFlow</strong></p>
   <p id="error"></p>
 
   <!-- Result card -->
   <div id="card">
     <div>
+      <p class="section-label">Model</p>
+      <p class="model-label" id="modelName">TensorFlow</p>
       <p class="section-label">Most likely diagnosis</p>
       <h2 id="diagnosis"></h2>
       <div class="prob-row">

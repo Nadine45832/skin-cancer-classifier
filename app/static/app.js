@@ -1,7 +1,10 @@
 const API_URL = "/predict";
 const dropzone = document.getElementById("dropzone");
 const fileInput = document.getElementById("fileInput");
+const modelSelect = document.getElementById("modelSelect");
 const btn = document.getElementById("analyzeBtn");
+const selectedModelLabel = document.getElementById("selectedModel");
+const modelNameLabel = document.getElementById("modelName");
 const errorEl = document.getElementById("error");
 const card = document.getElementById("card");
 let selectedFile = null;
@@ -22,6 +25,13 @@ dropzone.addEventListener("drop", (e) => {
 });
 
 fileInput.addEventListener("change", () => loadFile(fileInput.files[0]));
+modelSelect.addEventListener("change", () => updateSelectionLabels());
+
+function updateSelectionLabels() {
+  const selectedText = modelSelect.options[modelSelect.selectedIndex].text;
+  selectedModelLabel.innerHTML = `Selected model: <strong>${selectedText}</strong>`;
+  modelNameLabel.textContent = selectedText;
+}
 
 function loadFile(file) {
   if (!file || !file.type.startsWith("image/")) return;
@@ -48,6 +58,7 @@ btn.addEventListener("click", async () => {
   try {
     const form = new FormData();
     form.append("file", selectedFile);
+    form.append("model_type", modelSelect.value);
     const res = await fetch(API_URL, { method: "POST", body: form });
     if (!res.ok) throw new Error(`Server error: ${res.status}`);
     const data = await res.json();
@@ -88,5 +99,6 @@ function renderResult(data) {
     list.appendChild(row);
   });
 
+  modelNameLabel.textContent = modelSelect.options[modelSelect.selectedIndex].text;
   card.style.display = "flex";
 }

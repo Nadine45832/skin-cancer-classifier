@@ -68,8 +68,45 @@ main {
 }
 #analyzeBtn:disabled { opacity: 0.55; cursor: not-allowed; }
 
+.model-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.model-switch label {
+  font-size: 13px;
+  color: #8a91a8;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.model-switch select {
+  background: #131821;
+  border: 1px solid #2a2f40;
+  color: #e8eaf0;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-family: inherit;
+}
+
 /* Error */
 #error { color: #ff6b6b; font-size: 13px; display: none; }
+
+#selectedModel {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #8a91a8;
+  text-align: center;
+}
+
+.model-label {
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+}
 
 /* Result card */
 #card {
